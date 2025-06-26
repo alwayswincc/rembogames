@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rembo Games Showcase</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff1e56;
+      text-shadow: 0 0 10px #ff1e56;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .game-card {
+      background: #1a1a1a;
+      border: 2px solid #ff1e56;
+      border-radius: 15px;
+      overflow: hidden;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .game-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+    }
+
+    .game-preview {
+      width: 100%;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .game-title {
+      font-size: 1.5rem;
+      margin: 15px 0;
+      color: #ff1e56;
+      text-shadow: 0 0 5px #ff1e56;
+    }
+
+    .btn-download {
+      display: inline-block;
+      margin: 15px 0 20px;
+      padding: 10px 20px;
+      background: #ff1e56;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .btn-download:hover {
+      background: #ff3c78;
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      animation: flicker 4s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    #enter-btn {
+      margin-top: 20px;
+      padding: 15px 30px;
+      background: #ff1e56;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    #enter-btn:hover {
+      background: #ff3c78;
+      transform: scale(1.05);
+    }
+
+    #main-content {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #main-content.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="intro">
+    <h1>REMBO</h1>
+    <p>Your favorite indie games</p>
+    <button id="enter-btn">Click to Enter</button>
+  </div>
+
+  <div id="main-content">
+    <header>
+      <h1>Rembo Games</h1>
+      <p>Showcasing your amazing creations</p>
+    </header>
+
+    <main>
+      <div class="game-card">
+        <div class="game-preview" style="background-image: url('https://via.placeholder.com/320x180?text=Rembo+Clicker');"></div>
+        <div class="game-title">Rembo Clicker</div>
+        <a href="https://gofile.io/d/mDPAIp" class="btn-download" target="_blank" rel="noopener noreferrer">Download</a>
+      </div>
+
+      <div class="game-card">
+        <div class="game-preview" style="background-image: url('https://via.placeholder.com/320x180?text=Rembo+Fishing');"></div>
+        <div class="game-title">Rembo Fishing</div>
+        <a href="https://gofile.io/d/eY7vKd" class="btn-download" target="_blank" rel="noopener noreferrer">Download</a>
+      </div
+
+      <div class="game-card">
+        <div class="game-preview" style="background-image: url('https://via.placeholder.com/320x180?text=Rembo+Money+Simulator');"></div>
+        <div class="game-title">Rembo Money Simulator</div>
+        <a href="https://gofile.io/d/gmddfM" class="btn-download" target="_blank" rel="noopener noreferrer">Download</a>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    &copy; 2025 Rembo Games. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('enter-btn').addEventListener('click', () => {
+      const intro = document.getElementById('intro');
+      const mainContent = document.getElementById('main-content');
+
+      intro.style.display = 'none';
+      mainContent.classList.add('visible');
+
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, i * 300);
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+
+</html>
